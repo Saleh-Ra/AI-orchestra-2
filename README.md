@@ -4,7 +4,7 @@ A Python debate system: two LLM agents (Pro and Con) argue a fixed topic while a
 
 ## Status
 
-**Phase 0 complete** — documentation in [`docs/`](docs/). Implementation in progress; see [TODO.md](TODO.md).
+**Phase 2 complete** — config JSON + env loading. See [TODO.md](TODO.md).
 
 | Document | Description |
 |----------|-------------|
@@ -14,8 +14,15 @@ A Python debate system: two LLM agents (Pro and Con) argue a fixed topic while a
 
 ## Getting started
 
-Scaffold and CLI arrive in Phase 1. Planned run command:
+```bash
+python -m uv sync
+copy .env.example .env   # then add OPENAI_API_KEY
+python -m uv run python src/main.py
+```
+
+Configuration: `config/setup.json`, `config/rate_limits.json`. Secrets only in `.env`.
 
 ```bash
-uv run python src/main.py
+python -m uv run pytest --cov=src --cov-fail-under=85
+python -m uv run ruff check .
 ```

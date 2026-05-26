@@ -1,0 +1,22 @@
+{
+  "version": "1.00",
+  "app_name": "AI Orchestra 2",
+  "debate": {
+    "topic": "Social media improves human communication.",
+    "round_count": 10,
+    "opener_policy": "alternate"
+  },
+  "llm": {
+    "model": "gpt-4o-mini",
+    "temperature": {
+      "pro": 0.8,
+      "con": 0.8,
+      "judge": 0.3
+    }
+  },
+  "output": {
+    "save_results_json": false,
+    "results_dir": "results"
+  },
+  "mock_llm": false
+}

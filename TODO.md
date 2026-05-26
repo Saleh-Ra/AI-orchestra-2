@@ -9,7 +9,7 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 |-------|--------|--------|
 | 0 | Documentation & repo baseline | ✅ |
 | 1 | Tooling & project scaffold | ✅ |
-| 2 | Configuration & constants | ⬜ |
+| 2 | Configuration & constants | ✅ |
 | 3 | API gatekeeper & LLM client | ⬜ |
 | 4 | Domain models & transcript | ⬜ |
 | 5 | Agent prompts & agent classes | ⬜ |
@@ -96,25 +96,25 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 ### Config files
 
-- [ ] Add `config/setup.json` — `version`, debate topic, `round_count` (10), opener mode (`alternate` / `fixed` / `random`), model names, temperatures
-- [ ] Add `config/rate_limits.json` — `version`, per-service RPM/concurrency/retry (per PDF gatekeeper template)
-- [ ] Add `.env.example` — `OPENAI_API_KEY=`, optional `OPENAI_BASE_URL=`
-- [ ] Add `config/logging_config.json` (optional) or logging section in `setup.json`
+- [x] Add `config/setup.json` — `version`, debate topic, `round_count` (10), opener mode (`alternate` / `fixed` / `random`), model names, temperatures
+- [x] Add `config/rate_limits.json` — `version`, per-service RPM/concurrency/retry (per PDF gatekeeper template)
+- [x] Add `.env.example` — `OPENAI_API_KEY=`, optional `OPENAI_BASE_URL=`
+- [x] Add `config/logging_config.json` (optional) or logging section in `setup.json`
 
 ### Code
 
-- [ ] Implement `shared/config.py` — load JSON, validate required keys, read env for secrets
-- [ ] Implement `constants.py` — enums/labels only (agent roles, turn types: `opening` / `rebuttal`)
-- [ ] Implement `shared/version.py` — code version `1.00`, config version check helper
-- [ ] Keep each file ≤150 lines
+- [x] Implement `shared/config.py` — load JSON, validate required keys, read env for secrets
+- [x] Implement `constants.py` — enums/labels only (agent roles, turn types: `opening` / `rebuttal`)
+- [x] Implement `shared/version.py` — code version `1.00`, config version check helper
+- [x] Keep each file ≤150 lines
 
 ### Tests (phase 2)
 
-- [ ] `tests/unit/test_config.py` — loads valid `setup.json`; missing file raises clear error
-- [ ] `tests/unit/test_config.py` — rejects hardcoded API key patterns (smoke: config never returns raw key from JSON)
-- [ ] `tests/unit/test_version.py` — config version mismatch detected when versions differ
-- [ ] `tests/conftest.py` — fixture `sample_config` pointing at test config under `tests/fixtures/`
-- [ ] Add `tests/fixtures/setup.test.json` and `tests/fixtures/rate_limits.test.json`
+- [x] `tests/unit/test_config.py` — loads valid `setup.json`; missing file raises clear error
+- [x] `tests/unit/test_config.py` — rejects hardcoded API key patterns (smoke: config never returns raw key from JSON)
+- [x] `tests/unit/test_version.py` — config version mismatch detected when versions differ
+- [x] `tests/conftest.py` — fixture `sample_config` pointing at test config under `tests/fixtures/`
+- [x] Add `tests/fixtures/setup.test.json` and `tests/fixtures/rate_limits.test.json`
 
 ---
 
