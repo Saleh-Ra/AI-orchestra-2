@@ -1,0 +1,22 @@
+{
+  "version": "1.00",
+  "app_name": "AI Orchestra 2 Test",
+  "debate": {
+    "topic": "Test debate topic.",
+    "round_count": 2,
+    "opener_policy": "alternate"
+  },
+  "llm": {
+    "model": "gpt-4o-mini",
+    "temperature": {
+      "pro": 0.7,
+      "con": 0.7,
+      "judge": 0.2
+    }
+  },
+  "output": {
+    "save_results_json": true,
+    "results_dir": "results"
+  },
+  "mock_llm": true
+}
