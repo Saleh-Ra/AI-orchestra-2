@@ -8,7 +8,7 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 | Phase | Focus | Status |
 |-------|--------|--------|
 | 0 | Documentation & repo baseline | ✅ |
-| 1 | Tooling & project scaffold | ⬜ |
+| 1 | Tooling & project scaffold | ✅ |
 | 2 | Configuration & constants | ⬜ |
 | 3 | API gatekeeper & LLM client | ⬜ |
 | 4 | Domain models & transcript | ⬜ |
@@ -57,34 +57,34 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 ### Package layout
 
-- [ ] Create `src/ai_orchestra/` package with `__init__.py` and `__version__`
-- [ ] Create `src/ai_orchestra/sdk/` — `sdk.py` stub
-- [ ] Create `src/ai_orchestra/services/` — empty `__init__.py`
-- [ ] Create `src/ai_orchestra/shared/` — `config.py`, `gatekeeper.py`, `version.py` stubs
-- [ ] Create `src/ai_orchestra/constants.py` stub
-- [ ] Create `src/main.py` — thin entry (imports SDK only)
-- [ ] Create `tests/unit/`, `tests/integration/`, `tests/conftest.py`
-- [ ] Create `config/`, `data/`, `results/` (with `.gitkeep` if outputs stay local)
+- [x] Create `src/ai_orchestra/` package with `__init__.py` and `__version__`
+- [x] Create `src/ai_orchestra/sdk/` — `sdk.py` stub
+- [x] Create `src/ai_orchestra/services/` — empty `__init__.py`
+- [x] Create `src/ai_orchestra/shared/` — `config.py`, `gatekeeper.py`, `version.py` stubs
+- [x] Create `src/ai_orchestra/constants.py` stub
+- [x] Create `src/main.py` — thin entry (imports SDK only)
+- [x] Create `tests/unit/`, `tests/integration/`, `tests/conftest.py`
+- [x] Create `config/`, `data/`, `results/` (with `.gitkeep` if outputs stay local)
 
 ### `uv` & `pyproject.toml`
 
-- [ ] Initialize `pyproject.toml` (name, version, Python ≥3.10, package discovery under `src/`)
-- [ ] Add dependencies — OpenAI SDK (or chosen provider), pydantic (if used), pytest, pytest-cov, ruff
-- [ ] Run `uv sync` and commit `uv.lock`
-- [ ] Document in README stub: use `uv run`, not `pip`
+- [x] Initialize `pyproject.toml` (name, version, Python ≥3.10, package discovery under `src/`)
+- [x] Add dependencies — OpenAI SDK (or chosen provider), pydantic (if used), pytest, pytest-cov, ruff
+- [x] Run `uv sync` and commit `uv.lock`
+- [x] Document in README stub: use `uv run`, not `pip`
 
 ### Ruff & coverage
 
-- [ ] Configure `[tool.ruff]` — line length 100, target py310, rule set per course PDF
-- [ ] Configure `[tool.coverage.run]` — `source = ["src"]`, omit `src/main.py` if appropriate
-- [ ] Configure `[tool.coverage.report]` — `fail_under = 85`
-- [ ] Add `[tool.pytest.ini_options]` — `testpaths = ["tests"]`
+- [x] Configure `[tool.ruff]` — line length 100, target py310, rule set per course PDF
+- [x] Configure `[tool.coverage.run]` — `source = ["src"]`, omit `src/main.py` if appropriate
+- [x] Configure `[tool.coverage.report]` — `fail_under = 85`
+- [x] Add `[tool.pytest.ini_options]` — `testpaths = ["tests"]`
 
 ### Tests (phase 1)
 
-- [ ] `tests/unit/test_version.py` — package `__version__` is defined and semver-shaped
-- [ ] `tests/unit/test_imports.py` — `ai_orchestra` and subpackages import without error
-- [ ] Verify `uv run pytest` exits 0
+- [x] `tests/unit/test_version.py` — package `__version__` is defined and semver-shaped
+- [x] `tests/unit/test_imports.py` — `ai_orchestra` and subpackages import without error
+- [x] Verify `uv run pytest` exits 0
 
 ---
 
