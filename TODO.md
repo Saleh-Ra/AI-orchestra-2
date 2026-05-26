@@ -10,7 +10,7 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 | 0 | Documentation & repo baseline | ✅ |
 | 1 | Tooling & project scaffold | ✅ |
 | 2 | Configuration & constants | ✅ |
-| 3 | API gatekeeper & LLM client | ⬜ |
+| 3 | API gatekeeper & LLM client | ✅ |
 | 4 | Domain models & transcript | ⬜ |
 | 5 | Agent prompts & agent classes | ⬜ |
 | 6 | Debate engine & turn order | ⬜ |
@@ -126,20 +126,20 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 ### Implementation
 
-- [ ] Define `RateLimitConfig` / `QueueStatus` dataclasses or models (small module if needed)
-- [ ] Implement `shared/gatekeeper.py` — `ApiGatekeeper.execute()`, rate check, retry, logging hook
-- [ ] Implement `services/llm_client.py` (or `shared/llm_client.py`) — provider adapter used only by gatekeeper
-- [ ] Wire gatekeeper to read limits from `config/rate_limits.json`
-- [ ] Split files if any exceed 150 lines
+- [x] Define `RateLimitConfig` / `QueueStatus` dataclasses or models (small module if needed)
+- [x] Implement `shared/gatekeeper.py` — `ApiGatekeeper.execute()`, rate check, retry, logging hook
+- [x] Implement `services/llm_client.py` (or `shared/llm_client.py`) — provider adapter used only by gatekeeper
+- [x] Wire gatekeeper to read limits from `config/rate_limits.json`
+- [x] Split files if any exceed 150 lines
 
 ### Tests (phase 3)
 
-- [ ] `tests/unit/test_gatekeeper.py` — blocks or queues when rate limit exceeded (mock clock/counter)
-- [ ] `tests/unit/test_gatekeeper.py` — retries transient failure up to `max_retries`
-- [ ] `tests/unit/test_gatekeeper.py` — logs / records call metadata (assert mock logger called)
-- [ ] `tests/unit/test_gatekeeper.py` — successful call returns provider response
-- [ ] `tests/conftest.py` — `mock_llm_client` fixture returning fixed string / JSON
-- [ ] No tests call real API
+- [x] `tests/unit/test_gatekeeper.py` — blocks or queues when rate limit exceeded (mock clock/counter)
+- [x] `tests/unit/test_gatekeeper.py` — retries transient failure up to `max_retries`
+- [x] `tests/unit/test_gatekeeper.py` — logs / records call metadata (assert mock logger called)
+- [x] `tests/unit/test_gatekeeper.py` — successful call returns provider response
+- [x] `tests/conftest.py` — `mock_llm_client` fixture returning fixed string / JSON
+- [x] No tests call real API
 
 ---
 

@@ -30,3 +30,21 @@ def sample_config(setup_test_path: Path, rate_limits_test_path: Path) -> AppConf
         setup_path=setup_test_path,
         rate_limits_path=rate_limits_test_path,
     )
+
+
+@pytest.fixture
+def mock_llm_client():
+    from ai_orchestra.services.llm_client import build_llm_client
+
+    return build_llm_client(
+        model="gpt-4o-mini",
+        mock=True,
+        mock_response='{"pro_score": 55, "con_score": 45, "rationale": "fixture"}',
+    )
+
+
+@pytest.fixture
+def gatekeeper(rate_limits_test_path: Path):
+    from ai_orchestra.shared.gatekeeper import ApiGatekeeper
+
+    return ApiGatekeeper.from_config_file(rate_limits_test_path)
