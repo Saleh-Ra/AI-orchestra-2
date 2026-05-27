@@ -4,7 +4,7 @@ A Python debate system: two LLM agents (Pro and Con) argue a fixed topic while a
 
 ## Status
 
-**Phase 3 complete** — API gatekeeper + mock LLM client. See [TODO.md](TODO.md).
+**Phase 4 complete** — debate models + transcript. See [TODO.md](TODO.md).
 
 | Document | Description |
 |----------|-------------|

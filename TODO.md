@@ -11,7 +11,7 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 | 1 | Tooling & project scaffold | ✅ |
 | 2 | Configuration & constants | ✅ |
 | 3 | API gatekeeper & LLM client | ✅ |
-| 4 | Domain models & transcript | ⬜ |
+| 4 | Domain models & transcript | ✅ |
 | 5 | Agent prompts & agent classes | ⬜ |
 | 6 | Debate engine & turn order | ⬜ |
 | 7 | SDK & public API | ⬜ |
@@ -151,18 +151,18 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 ### Implementation
 
-- [ ] `services/models/turn.py` — `Turn` (round, agent, role, text, timestamp/id)
-- [ ] `services/models/scores.py` — `ScoreSnapshot` (pro_score, con_score, rationale, after_turn_id)
-- [ ] `services/models/debate.py` — `DebateState`, `DebateResult` (transcript, score_history, winner, final_summary)
-- [ ] `services/transcript.py` — append turn, format for judge prompt, export full transcript
-- [ ] Use Pydantic or dataclasses consistently; keep files ≤150 lines
+- [x] `services/models/turn.py` — `Turn` (round, agent, role, text, timestamp/id)
+- [x] `services/models/scores.py` — `ScoreSnapshot` (pro_score, con_score, rationale, after_turn_id)
+- [x] `services/models/debate.py` — `DebateState`, `DebateResult` (transcript, score_history, winner, final_summary)
+- [x] `services/transcript.py` — append turn, format for judge prompt, export full transcript
+- [x] Use Pydantic or dataclasses consistently; keep files ≤150 lines
 
 ### Tests (phase 4)
 
-- [ ] `tests/unit/test_transcript.py` — append turn increases length; order preserved
-- [ ] `tests/unit/test_transcript.py` — `format_for_judge()` includes all prior turns
-- [ ] `tests/unit/test_models.py` — score bounds 0–100 validated
-- [ ] `tests/unit/test_models.py` — serialization round-trip (dict/JSON)
+- [x] `tests/unit/test_transcript.py` — append turn increases length; order preserved
+- [x] `tests/unit/test_transcript.py` — `format_for_judge()` includes all prior turns
+- [x] `tests/unit/test_models.py` — score bounds 0–100 validated
+- [x] `tests/unit/test_models.py` — serialization round-trip (dict/JSON)
 
 ---
 
