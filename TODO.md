@@ -312,27 +312,31 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 **Definition of done:** Manual checklist signed off; GitHub repo ready for grader clone-and-run.
 
+**Status:** Code verification complete (2026-05-27). GitHub steps skipped (local-only sign-off).
+
 ### Manual smoke tests
 
-- [ ] `uv sync` on clean machine / fresh venv
-- [ ] `uv run pytest` — all green
-- [ ] `uv run python src/main.py` with `--mock` (or test config) — full debate prints
-- [ ] (Optional) One real API run with valid `.env` — topic and 10 rounds complete
+- [x] `uv sync` on clean machine / fresh venv
+- [x] `uv run pytest` — all green (71 tests)
+- [x] `uv run python src/main.py` with test config (`mock_llm: true`) — full debate prints
+- [ ] (Optional) One real API run with valid `.env` — topic and 10 rounds complete *(run locally when ready)*
 
 ### Submission checklist (PDF-aligned, submission scope)
 
-- [ ] `README.md` complete
-- [ ] `docs/PRD.md`, `docs/PLAN.md`, mechanism PRDs present
-- [ ] `pyproject.toml` + `uv.lock` committed
-- [ ] `.env.example` present; `.env` not committed
-- [ ] SDK pattern — no business logic in CLI beyond SDK call
-- [ ] Gatekeeper — no raw LLM calls outside gatekeeper
-- [ ] Tests — unit + integration; coverage ≥85%
-- [ ] Ruff — 0 errors
-- [ ] File size — all Python files ≤150 lines of code
-- [ ] Product — 10 rounds, Pro/Con/Judge, dynamic scoring, fixed topic per PLAN.md
+- [x] `README.md` complete
+- [x] `docs/PRD.md`, `docs/PLAN.md`, mechanism PRDs present
+- [x] `pyproject.toml` + `uv.lock` committed
+- [x] `.env.example` present; `.env` not committed (`.gitignore` covers `.env`)
+- [x] SDK pattern — `main.py` calls `DebateSDK.run_debate()` only for debate logic; reporter is presentation-only
+- [x] Gatekeeper — `openai` import only in `llm_client.py`; agents tested for no direct import
+- [x] Tests — unit + integration; coverage ≥85% (~90% on `src/`)
+- [x] Ruff — 0 errors
+- [x] File size — all Python files ≤150 lines (`tests/unit/test_line_limits.py`)
+- [x] Product — 10 rounds, Pro/Con/Judge, dynamic scoring, fixed topic per PLAN.md
 
 ### Git / GitHub
+
+*(Skipped — user handles push separately.)*
 
 - [ ] Meaningful commit per phase (or logical group)
 - [ ] Branch `main` (or `master`) reflects stable last phase
@@ -340,8 +344,8 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 ### Tests (phase 10)
 
-- [ ] Full CI-style local run: `uv run ruff check . && uv run pytest --cov=src --cov-fail-under=85`
-- [ ] Record pass date / commit hash in this file (optional): _______________
+- [x] Full CI-style local run: `uv run ruff check . && uv run pytest --cov=src --cov-fail-under=85`
+- [x] Record pass date / commit hash: **2026-05-27** / `4e4683d` *(re-run after your next commit)*
 
 ---
 
@@ -351,10 +355,10 @@ Record choices here so we do not reopen them mid-project.
 
 | Decision | Choice | Date |
 |----------|--------|------|
-| Opener policy (alternate / fixed / random) | | |
-| LLM provider & model | | |
-| Mock mode flag name (`--mock` / env) | | |
-| Judge malformed JSON behavior | | |
+| Opener policy (alternate / fixed / random) | `alternate` (Pro odd rounds, Con even) — `config/setup.json` | 2026-05-27 |
+| LLM provider & model | OpenAI `gpt-4o-mini`; key via `OPENAI_API_KEY` in `.env` | 2026-05-27 |
+| Mock mode flag name (`--mock` / env) | `mock_llm` boolean in `setup.json` (no CLI `--mock`; use test fixture or set in config) | 2026-05-27 |
+| Judge malformed JSON behavior | `judge_parser`: keep previous scores if fallback provided, else 50/50; debate continues | 2026-05-27 |
 
 ---
 
