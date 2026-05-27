@@ -4,6 +4,8 @@ A Python multi-agent debate system: **Pro** and **Con** LLM agents argue a fixed
 
 **Topic (v1):** *Social media improves human communication.*
 
+**Status:** Phases 0–10 complete — submission-ready locally (see [TODO.md](TODO.md)). Optional: one real 10-round API run with `mock_llm: false` and `.env`.
+
 ## Features
 
 - Three specialized agents: Pro (defends), Con (opposes), Judge (scores + winner)
