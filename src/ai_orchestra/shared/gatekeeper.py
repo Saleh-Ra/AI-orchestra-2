@@ -9,7 +9,6 @@ from collections import deque
 from collections.abc import Callable
 from typing import Any, TypeVar
 
-from ai_orchestra.services.llm_errors import LlmTransientError
 from ai_orchestra.shared.config import load_rate_limits_config
 from ai_orchestra.shared.config_models import RateLimitServiceSettings
 from ai_orchestra.shared.gatekeeper_models import (
@@ -17,6 +16,7 @@ from ai_orchestra.shared.gatekeeper_models import (
     QueueStatus,
     RateLimitConfig,
 )
+from ai_orchestra.shared.gatekeeper_utils import count_since, is_transient, seconds_until_slot
 
 T = TypeVar("T")
 Clock = Callable[[], float]
@@ -71,8 +71,8 @@ class ApiGatekeeper:
             return QueueStatus(
                 queue_depth=self._waiting,
                 concurrent_in_use=self._concurrent,
-                requests_last_minute=self._count_since(now, 60),
-                requests_last_hour=self._count_since(now, 3600),
+                requests_last_minute=count_since(self._request_times, now, 60),
+                requests_last_hour=count_since(self._request_times, now, 3600),
                 total_calls=self._total_calls,
                 total_retries=self._total_retries,
             )
@@ -88,7 +88,7 @@ class ApiGatekeeper:
                 self._logger.info("Gatekeeper call succeeded")
                 return result
             except Exception as exc:
-                if not self._is_transient(exc) or attempts >= self.config.max_retries:
+                if not is_transient(exc) or attempts >= self.config.max_retries:
                     self._logger.error("Gatekeeper call failed: %s", exc)
                     raise
                 attempts += 1
@@ -114,7 +114,12 @@ class ApiGatekeeper:
                         f"Queue full (max depth {self.config.queue_max_depth})."
                     )
                 self._waiting += 1
-            wait_seconds = self._seconds_until_slot()
+            wait_seconds = seconds_until_slot(
+                self._request_times,
+                now=now,
+                config=self.config,
+                concurrent_in_use=self._concurrent,
+            )
             self._sleeper(max(wait_seconds, 0.001))
             with self._lock:
                 self._waiting = max(self._waiting - 1, 0)
@@ -127,29 +132,6 @@ class ApiGatekeeper:
         if self._concurrent >= self.config.concurrent_max:
             return False
         return (
-            self._count_since(now, 60) < self.config.requests_per_minute
-            and self._count_since(now, 3600) < self.config.requests_per_hour
+            count_since(self._request_times, now, 60) < self.config.requests_per_minute
+            and count_since(self._request_times, now, 3600) < self.config.requests_per_hour
         )
-
-    def _count_since(self, now: float, window: float) -> int:
-        return sum(1 for stamp in self._request_times if now - stamp < window)
-
-    def _seconds_until_slot(self) -> float:
-        now = self._clock()
-        waits: list[float] = [0.0]
-        minute_times = [stamp for stamp in self._request_times if now - stamp < 60]
-        if len(minute_times) >= self.config.requests_per_minute:
-            waits.append(60 - (now - min(minute_times)) + 0.001)
-        hour_times = [stamp for stamp in self._request_times if now - stamp < 3600]
-        if len(hour_times) >= self.config.requests_per_hour:
-            waits.append(3600 - (now - min(hour_times)) + 0.001)
-        if self._concurrent >= self.config.concurrent_max:
-            waits.append(self.config.retry_after_seconds)
-        return max(waits)
-
-    @staticmethod
-    def _is_transient(exc: Exception) -> bool:
-        if isinstance(exc, LlmTransientError):
-            return True
-        status = getattr(exc, "status_code", None)
-        return isinstance(status, int) and status in {408, 429, 500, 502, 503, 504}
