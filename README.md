@@ -4,7 +4,7 @@ A Python debate system: two LLM agents (Pro and Con) argue a fixed topic while a
 
 ## Status
 
-**Phase 4 complete** — debate models + transcript. See [TODO.md](TODO.md).
+**Phase 5 complete** — Pro/Con/Judge agents + prompts. See [TODO.md](TODO.md).
 
 | Document | Description |
 |----------|-------------|

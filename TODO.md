@@ -12,7 +12,7 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 | 2 | Configuration & constants | ✅ |
 | 3 | API gatekeeper & LLM client | ✅ |
 | 4 | Domain models & transcript | ✅ |
-| 5 | Agent prompts & agent classes | ⬜ |
+| 5 | Agent prompts & agent classes | ✅ |
 | 6 | Debate engine & turn order | ⬜ |
 | 7 | SDK & public API | ⬜ |
 | 8 | CLI, reporter & end-to-end flow | ⬜ |
@@ -174,28 +174,28 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 ### Prompts
 
-- [ ] `services/prompts/pro_system.txt` (or `.py` template module) — defends topic
-- [ ] `services/prompts/con_system.txt` — opposes topic
-- [ ] `services/prompts/judge_system.txt` — rubric + JSON schema instruction
-- [ ] Document prompt versions in `docs/prompts.md`
+- [x] `services/prompts/pro_system.txt` (or `.py` template module) — defends topic
+- [x] `services/prompts/con_system.txt` — opposes topic
+- [x] `services/prompts/judge_system.txt` — rubric + JSON schema instruction
+- [x] Document prompt versions in `docs/prompts.md`
 
 ### Agents
 
-- [ ] `services/agents/base.py` — shared `generate_argument(transcript, role, turn_type)` via gatekeeper
-- [ ] `services/agents/pro_agent.py` — Pro opening & rebuttal builders
-- [ ] `services/agents/con_agent.py` — Con opening & rebuttal builders
-- [ ] `services/agents/judge_agent.py` — full transcript + latest turn → `ScoreSnapshot`
-- [ ] `services/agents/judge_parser.py` — parse/validate JSON; safe defaults on malformed response
-- [ ] Each file ≤150 lines
+- [x] `services/agents/base.py` — shared `generate_argument(transcript, role, turn_type)` via gatekeeper
+- [x] `services/agents/pro_agent.py` — Pro opening & rebuttal builders
+- [x] `services/agents/con_agent.py` — Con opening & rebuttal builders
+- [x] `services/agents/judge_agent.py` — full transcript + latest turn → `ScoreSnapshot`
+- [x] `services/agents/judge_parser.py` — parse/validate JSON; safe defaults on malformed response
+- [x] Each file ≤150 lines
 
 ### Tests (phase 5)
 
-- [ ] `tests/unit/test_judge_parser.py` — valid JSON → correct scores
-- [ ] `tests/unit/test_judge_parser.py` — invalid JSON → clear error or graceful fallback (document behavior)
-- [ ] `tests/unit/test_pro_agent.py` — mock LLM; prompt contains topic and transcript snippet
-- [ ] `tests/unit/test_con_agent.py` — mock LLM; rebuttal prompt references opponent last turn
-- [ ] `tests/unit/test_judge_agent.py` — mock LLM returning JSON; scores in range
-- [ ] Assert no agent module imports provider SDK directly (optional lint test / grep checklist)
+- [x] `tests/unit/test_judge_parser.py` — valid JSON → correct scores
+- [x] `tests/unit/test_judge_parser.py` — invalid JSON → clear error or graceful fallback (document behavior)
+- [x] `tests/unit/test_pro_agent.py` — mock LLM; prompt contains topic and transcript snippet
+- [x] `tests/unit/test_con_agent.py` — mock LLM; rebuttal prompt references opponent last turn
+- [x] `tests/unit/test_judge_agent.py` — mock LLM returning JSON; scores in range
+- [x] Assert no agent module imports provider SDK directly (optional lint test / grep checklist)
 
 ---
 
