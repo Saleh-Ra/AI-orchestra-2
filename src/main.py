@@ -1,12 +1,13 @@
-"""Thin CLI entry point for AI Orchestra 2 (stub for Phase 1)."""
+"""CLI stub for AI Orchestra 2.
 
-from ai_orchestra.sdk import DebateSDK
+Phase 8 will implement a real terminal experience (mock flag, reporter, etc.).
+For now we keep this file safe to run without an API key.
+"""
 
 
 def main() -> None:
-    sdk = DebateSDK()
-    _ = sdk.run_debate()
-    print("AI Orchestra 2 scaffold created. Implement the debate in later phases.")
+    print("AI Orchestra 2: CLI is not implemented yet (Phase 8).")
+    print("Use tests or call `ai_orchestra.sdk.DebateSDK.run_debate()` from code.")
 
 
 if __name__ == "__main__":

@@ -231,16 +231,16 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 ### Implementation
 
-- [ ] `sdk/sdk.py` — `DebateSDK.run_debate(config_path=None) -> DebateResult`
-- [ ] `sdk/sdk.py` — optional `run_debate_async` only if needed (YAGNI otherwise)
-- [ ] `ai_orchestra/__init__.py` — export `__version__`, document public API in `__all__`
-- [ ] SDK wires config → engine → result; no business logic in `main.py`
+- [x] `sdk/sdk.py` — `DebateSDK.run_debate(config_path=None) -> DebateResult`
+- [x] `sdk/sdk.py` — optional `run_debate_async` only if needed (YAGNI otherwise)
+- [x] `ai_orchestra/__init__.py` — export `__version__`, document public API in `__all__`
+- [x] SDK wires config → engine → result; no business logic in `main.py`
 
 ### Tests (phase 7)
 
-- [ ] `tests/unit/test_sdk.py` — `run_debate` with test config + mocks returns `DebateResult`
-- [ ] `tests/unit/test_sdk.py` — SDK does not require env var when mock mode/fixture flag set
-- [ ] `tests/integration/test_sdk_integration.py` — end-to-end with fixture config under `tests/fixtures/`
+- [x] `tests/unit/test_sdk.py` — `run_debate` with test config + mocks returns `DebateResult`
+- [x] `tests/unit/test_sdk.py` — SDK does not require env var when mock mode/fixture flag set
+- [x] `tests/integration/test_sdk_integration.py` — end-to-end with fixture config under `tests/fixtures/`
 
 ---
 
