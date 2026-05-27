@@ -90,4 +90,3 @@ def get_openai_base_url() -> str | None:
 
     value = os.environ.get("OPENAI_BASE_URL", "").strip()
     return value or None
-

@@ -12,4 +12,3 @@ def test_sdk_end_to_end_with_fixture_config(setup_test_path: Path) -> None:
     assert result.topic == "Test debate topic."
     assert result.winner in {AgentRole.PRO, AgentRole.CON}
     assert result.final_summary
-

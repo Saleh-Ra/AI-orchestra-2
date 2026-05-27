@@ -72,4 +72,3 @@ def iter_turn_lines(result: DebateResult) -> Iterable[str]:
         if i < len(result.score_history):
             s = result.score_history[i]
             yield f"Current scores — Pro: {s.pro_score}, Con: {s.con_score}"
-

@@ -49,4 +49,3 @@ def seconds_until_slot(
         waits.append(config.retry_after_seconds)
 
     return max(waits)
-

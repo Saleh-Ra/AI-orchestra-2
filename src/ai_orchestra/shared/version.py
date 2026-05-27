@@ -16,8 +16,5 @@ def validate_config_version(version: str, *, source: str = "config") -> None:
     """Ensure config version matches the version supported by this release."""
 
     if version != CONFIG_VERSION:
-        msg = (
-            f"{source} version {version!r} is unsupported; "
-            f"expected {CONFIG_VERSION!r}."
-        )
+        msg = f"{source} version {version!r} is unsupported; expected {CONFIG_VERSION!r}."
         raise ConfigVersionError(msg)

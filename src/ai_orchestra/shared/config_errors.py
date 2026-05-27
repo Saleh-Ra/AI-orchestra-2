@@ -11,4 +11,3 @@ class ConfigNotFoundError(ConfigError, FileNotFoundError):
 
 class SecretInConfigError(ConfigError, ValueError):
     """Raised when config JSON appears to contain secrets."""
-

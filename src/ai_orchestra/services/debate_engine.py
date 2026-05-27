@@ -130,11 +130,7 @@ class DebateEngine:
             msg = "Debate finished without any judge scores."
             raise DebateEngineError(msg)
         latest = transcript.score_history[-1]
-        winner = (
-            AgentRole.PRO
-            if latest.pro_score >= latest.con_score
-            else AgentRole.CON
-        )
+        winner = AgentRole.PRO if latest.pro_score >= latest.con_score else AgentRole.CON
         return transcript.build_result(
             winner=winner,
             final_summary=latest.rationale,

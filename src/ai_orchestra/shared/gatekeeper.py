@@ -81,7 +81,9 @@ class ApiGatekeeper:
         attempts = 0
         while True:
             try:
-                self._logger.info("Gatekeeper executing %s", getattr(api_callable, "__name__", "call"))
+                self._logger.info(
+                    "Gatekeeper executing %s", getattr(api_callable, "__name__", "call")
+                )
                 result = api_callable(*args, **kwargs)
                 with self._lock:
                     self._total_calls += 1
