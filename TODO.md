@@ -13,7 +13,7 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 | 3 | API gatekeeper & LLM client | ✅ |
 | 4 | Domain models & transcript | ✅ |
 | 5 | Agent prompts & agent classes | ✅ |
-| 6 | Debate engine & turn order | ⬜ |
+| 6 | Debate engine & turn order | ✅ |
 | 7 | SDK & public API | ⬜ |
 | 8 | CLI, reporter & end-to-end flow | ⬜ |
 | 9 | README, docs polish & quality gate | ⬜ |
@@ -207,19 +207,19 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 ### Implementation
 
-- [ ] `services/opener_policy.py` — alternate / fixed / random (config-driven); document chosen default in code
-- [ ] `services/debate_engine.py` — loop rounds 1–10, assign opener, call Pro/Con, call judge after each turn
-- [ ] `services/debate_engine.py` — accumulate `score_history` on `DebateState`
-- [ ] Handle engine errors with clear messages (per PDF error-handling)
-- [ ] Keep engine ≤150 lines; extract helpers if needed
+- [x] `services/opener_policy.py` — alternate / fixed / random (config-driven); document chosen default in code
+- [x] `services/debate_engine.py` — loop rounds 1–10, assign opener, call Pro/Con, call judge after each turn
+- [x] `services/debate_engine.py` — accumulate `score_history` on `DebateState`
+- [x] Handle engine errors with clear messages (per PDF error-handling)
+- [x] Keep engine ≤150 lines; extract helpers if needed
 
 ### Tests (phase 6)
 
-- [ ] `tests/unit/test_opener_policy.py` — alternate: odd/even rounds correct opener
-- [ ] `tests/unit/test_debate_engine.py` — 10 rounds → 20 turns recorded (mocked agents)
-- [ ] `tests/unit/test_debate_engine.py` — judge invoked after every turn (mock call count == 20)
-- [ ] `tests/unit/test_debate_engine.py` — score history length matches judge invocations
-- [ ] `tests/integration/test_debate_flow.py` — full debate with all mocks; winner set from final scores
+- [x] `tests/unit/test_opener_policy.py` — alternate: odd/even rounds correct opener
+- [x] `tests/unit/test_debate_engine.py` — 10 rounds → 20 turns recorded (mocked agents)
+- [x] `tests/unit/test_debate_engine.py` — judge invoked after every turn (mock call count == 20)
+- [x] `tests/unit/test_debate_engine.py` — score history length matches judge invocations
+- [x] `tests/integration/test_debate_flow.py` — full debate with all mocks; winner set from final scores
 
 ---
 
