@@ -4,7 +4,7 @@ A Python debate system: two LLM agents (Pro and Con) argue a fixed topic while a
 
 ## Status
 
-**Phase 7 complete** — SDK exposes a single `DebateSDK.run_debate()` entry point (mockable via config). See [TODO.md](TODO.md).
+**Phase 8 complete** — CLI/reporter works end-to-end (mockable via config). See [TODO.md](TODO.md).
 
 | Document | Description |
 |----------|-------------|

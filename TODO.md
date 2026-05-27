@@ -252,17 +252,17 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 ### Implementation
 
-- [ ] `services/reporter.py` — print turn header (round, agent, role), argument text, current scores
-- [ ] `services/reporter.py` — print final winner, scores, judge summary
-- [ ] `src/main.py` — argparse if needed (`--config`, `--mock`); calls `DebateSDK` only
-- [ ] Optional: write transcript JSON to `results/<timestamp>.json` (config flag)
-- [ ] All files ≤150 lines
+- [x] `services/reporter.py` — print turn header (round, agent, role), argument text, current scores
+- [x] `services/reporter.py` — print final winner, scores, judge summary
+- [x] `src/main.py` — argparse if needed (`--config`, `--mock`); calls `DebateSDK` only
+- [x] Optional: write transcript JSON to `results/<timestamp>.json` (config flag)
+- [x] All files ≤150 lines
 
 ### Tests (phase 8)
 
-- [ ] `tests/unit/test_reporter.py` — snapshot or assert key strings in output (capsys)
-- [ ] `tests/integration/test_cli.py` — invoke main with mock mode; exit code 0
-- [ ] `tests/integration/test_cli.py` — output contains round labels and final winner
+- [x] `tests/unit/test_reporter.py` — snapshot or assert key strings in output (capsys)
+- [x] `tests/integration/test_cli.py` — invoke main with mock mode; exit code 0
+- [x] `tests/integration/test_cli.py` — output contains round labels and final winner
 
 ---
 
