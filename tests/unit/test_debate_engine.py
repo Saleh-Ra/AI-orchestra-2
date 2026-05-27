@@ -61,11 +61,7 @@ def test_winner_from_final_scores() -> None:
     engine, _ = _engine(round_count=2)
     result = engine.run()
     latest = result.score_history[-1]
-    expected = (
-        AgentRole.PRO
-        if latest.pro_score >= latest.con_score
-        else AgentRole.CON
-    )
+    expected = AgentRole.PRO if latest.pro_score >= latest.con_score else AgentRole.CON
     assert result.winner == expected
 
 

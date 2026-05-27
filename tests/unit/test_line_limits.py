@@ -14,4 +14,3 @@ def test_src_python_files_are_within_line_limit() -> None:
             offenders.append(f"{path.relative_to(Path.cwd())}: {len(lines)} lines")
 
     assert offenders == [], "Files exceed 150 lines:\n" + "\n".join(offenders)
-

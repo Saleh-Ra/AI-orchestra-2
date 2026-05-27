@@ -115,6 +115,22 @@ CLI (main.py)
 **Rationale:** Fairness without randomness in tests.  
 **Tradeoff:** Config must document other modes if added.
 
+**Implemented:** `opener_policy.py` supports `alternate` (default), `pro_first`, `con_first`, and `random` via `config/setup.json`.
+
+## Implementation status (v1)
+
+| Layer | Module(s) | Status |
+|-------|-----------|--------|
+| CLI | `src/main.py` | Done — argparse only, calls SDK + reporter |
+| SDK | `sdk/sdk.py` | Done — `DebateSDK.run_debate()` |
+| Engine | `debate_engine.py`, `debate_factory.py` | Done |
+| Agents | `pro_agent`, `con_agent`, `judge_agent`, `judge_parser` | Done |
+| Transcript / models | `transcript.py`, `services/models/*` | Done |
+| Gatekeeper / LLM | `gatekeeper.py`, `llm_client.py` | Done |
+| Config | `shared/config*.py` | Done |
+| Reporter | `reporter.py` | Done |
+| Quality | Ruff, pytest ≥85%, ≤150 lines per `src/**/*.py` | Enforced in CI-style local commands |
+
 ## Project objective
 
 Explore multi-agent debate: generation, rebuttal, dynamic scoring, and referee behavior in a structured environment.

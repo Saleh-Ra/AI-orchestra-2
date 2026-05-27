@@ -65,4 +65,3 @@ def test_print_debate_writes_to_stdout(capsys) -> None:
     out = capsys.readouterr().out
     assert "Con rebuttal argument." in out
     assert "Final Winner: CON" in out
-

@@ -7,11 +7,7 @@ FORBIDDEN = "openai"
 
 def test_agent_modules_do_not_import_openai() -> None:
     agents_dir = (
-        Path(__file__).resolve().parents[2]
-        / "src"
-        / "ai_orchestra"
-        / "services"
-        / "agents"
+        Path(__file__).resolve().parents[2] / "src" / "ai_orchestra" / "services" / "agents"
     )
     for path in agents_dir.glob("*.py"):
         if path.name == "__init__.py":

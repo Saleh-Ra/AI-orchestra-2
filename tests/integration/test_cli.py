@@ -25,4 +25,3 @@ def test_cli_runs_with_fixture_config(setup_test_path: Path) -> None:
     assert "Round 1" in proc.stdout
     assert "Final Winner:" in proc.stdout
     assert proc.stderr == ""
-

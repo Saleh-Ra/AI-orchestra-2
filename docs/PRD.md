@@ -65,12 +65,12 @@
 
 ## 7. Acceptance criteria
 
-- [ ] Full debate completes for the fixed topic with 20 agent turns and 20 judge updates.
-- [ ] Rebuttal prompts include the opponent’s latest argument (verified in tests with mocks).
-- [ ] Judge JSON is parsed; invalid JSON handled without crashing (behavior documented).
-- [ ] `uv run pytest` passes with coverage ≥ 85%.
-- [ ] `uv run ruff check .` passes.
-- [ ] README explains install, config, usage, and test commands.
+- [x] Full debate completes for the fixed topic with 20 agent turns and 20 judge updates (production `round_count: 10`; verified in integration tests with stub/mock agents).
+- [x] Rebuttal prompts include the opponent’s latest argument (verified in unit tests with recording mocks).
+- [x] Judge JSON is parsed; invalid JSON handled without crashing (see `judge_parser.py` and [prompts.md](prompts.md)).
+- [x] `uv run pytest` passes with coverage ≥ 85% on `src/`.
+- [x] `uv run ruff check .` passes.
+- [x] README explains install, config, usage, and test commands.
 
 ## 8. Out of scope (v1)
 

@@ -54,9 +54,7 @@ class Transcript:
             lines.extend(_format_turn_block(turn))
         if self._state.score_history:
             latest = self._state.score_history[-1]
-            lines.append(
-                f"Current scores — Pro: {latest.pro_score}, Con: {latest.con_score}"
-            )
+            lines.append(f"Current scores — Pro: {latest.pro_score}, Con: {latest.con_score}")
         return "\n".join(lines).strip()
 
     def to_state(self) -> DebateState:
@@ -92,8 +90,12 @@ class Transcript:
         """Construct final debate result from current transcript."""
 
         latest = self._state.latest_scores()
-        pro = final_pro_score if final_pro_score is not None else (latest.pro_score if latest else 0)
-        con = final_con_score if final_con_score is not None else (latest.con_score if latest else 0)
+        pro = (
+            final_pro_score if final_pro_score is not None else (latest.pro_score if latest else 0)
+        )
+        con = (
+            final_con_score if final_con_score is not None else (latest.con_score if latest else 0)
+        )
         return DebateResult(
             topic=self._state.topic,
             turns=self.turns,

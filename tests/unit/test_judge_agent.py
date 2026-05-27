@@ -6,9 +6,7 @@ from ai_orchestra.shared.gatekeeper_models import RateLimitConfig
 from tests.helpers.recording_llm import RecordingLlmClient
 
 TOPIC = "Social media improves human communication."
-JUDGE_JSON = (
-    '{"pro_score": 62, "con_score": 38, "rationale": "Pro argument is more cohesive."}'
-)
+JUDGE_JSON = '{"pro_score": 62, "con_score": 38, "rationale": "Pro argument is more cohesive."}'
 
 
 def test_judge_agent_returns_valid_snapshot() -> None:

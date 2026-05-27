@@ -72,4 +72,3 @@ def _resolve_config_paths(config_path: str | Path | None) -> tuple[Path | None, 
 
 
 __all__ = ["DebateSDK"]
-

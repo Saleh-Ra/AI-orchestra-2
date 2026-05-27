@@ -274,35 +274,35 @@ Work **one phase per GitHub push** when possible; mark items `[x]` as you finish
 
 ### README (`README.md`)
 
-- [ ] Project title and description (debate system, three agents, persuasion focus)
-- [ ] Features list aligned with PLAN.md
-- [ ] Prerequisites — Python version, `uv` install link
-- [ ] Installation — clone, `uv sync`, copy `.env.example` → `.env`
-- [ ] Configuration — `config/setup.json`, `rate_limits.json`, env vars
-- [ ] Usage — `uv run python src/main.py`, flags, example output snippet
-- [ ] Running tests — `uv run pytest`, coverage command
-- [ ] Project structure — tree of `src/`, `tests/`, `docs/`, `config/`
-- [ ] Link to `PLAN.md` / `docs/PRD.md`
-- [ ] License & credits section
+- [x] Project title and description (debate system, three agents, persuasion focus)
+- [x] Features list aligned with PLAN.md
+- [x] Prerequisites — Python version, `uv` install link
+- [x] Installation — clone, `uv sync`, copy `.env.example` → `.env`
+- [x] Configuration — `config/setup.json`, `rate_limits.json`, env vars
+- [x] Usage — `uv run python src/main.py`, flags, example output snippet
+- [x] Running tests — `uv run pytest`, coverage command
+- [x] Project structure — tree of `src/`, `tests/`, `docs/`, `config/`
+- [x] Link to `PLAN.md` / `docs/PRD.md`
+- [x] License & credits section
 
 ### Docs sync
 
-- [ ] `docs/TODO.md` — copy or link to root `TODO.md` (keep one source of truth; avoid drift)
-- [ ] Update `docs/PRD.md` acceptance criteria — check off implemented items
-- [ ] Update `docs/PLAN.md` — final module diagram and opener rule chosen
+- [x] `docs/TODO.md` — copy or link to root `TODO.md` (keep one source of truth; avoid drift)
+- [x] Update `docs/PRD.md` acceptance criteria — check off implemented items
+- [x] Update `docs/PLAN.md` — final module diagram and opener rule chosen
 
 ### Quality gate
 
-- [ ] `uv run ruff check .` — 0 errors
-- [ ] `uv run ruff format .` (if used) — consistent style
-- [ ] `uv run pytest --cov=src --cov-report=term-missing` — ≥85%
-- [ ] Review every `.py` under `src/` — each ≤150 lines of code (manual or script)
-- [ ] Review test files — each ≤150 lines
+- [x] `uv run ruff check .` — 0 errors
+- [x] `uv run ruff format .` (if used) — consistent style
+- [x] `uv run pytest --cov=src --cov-report=term-missing` — ≥85%
+- [x] Review every `.py` under `src/` — each ≤150 lines of code (manual or script)
+- [x] Review test files — each ≤150 lines
 
 ### Tests (phase 9)
 
-- [ ] Add any missing tests to reach 85% (focus `gatekeeper`, `debate_engine`, `judge_parser`)
-- [ ] `tests/unit/test_line_limits.py` (optional) — fail if any `src/**/*.py` > 150 code lines
+- [x] Add any missing tests to reach 85% (focus `gatekeeper`, `debate_engine`, `judge_parser`)
+- [x] `tests/unit/test_line_limits.py` (optional) — fail if any `src/**/*.py` > 150 code lines
 
 ---
 
